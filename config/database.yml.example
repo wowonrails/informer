@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: informer_development
   pool: 5
-  username: vim
-  password: vim
+  username: postgres
+  password: postgres
   port: 5432
   host: localhost
   min_messages: WARNING
@@ -14,8 +14,8 @@ test:
   encoding: unicode
   database: informer_test
   pool: 5
-  username: vim
-  password: vim
+  username: postgres
+  password: postgres
   port: 5432
   host: localhost
   min_messages: WARNING
