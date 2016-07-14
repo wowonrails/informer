@@ -43,8 +43,7 @@ class HitCounterVk
     end
 
     def get_user_status!
-      user_ids = 262325748
-      response = RestClient.get 'https://api.vk.com/method/users.get?user_ids=15567159&fields=online&v=5.52', {accept: :json}
+      response = RestClient.get 'https://api.vk.com/method/users.get?user_ids=262325748&fields=online&v=5.52', {accept: :json}
       hash = JSON.parse(response.body)
       @user_name = hash['response'][0]['first_name']
       @user_status = hash['response'][0]['online']
