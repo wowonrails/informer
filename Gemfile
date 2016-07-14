@@ -16,6 +16,10 @@ gem 'devise', github: 'plataformatec/devise', branch: 'master'
 
 # API Stuff
 gem 'jbuilder'
+
+# client
+gem 'rest-client'
+
 # Redis
 gem 'redis'
 
