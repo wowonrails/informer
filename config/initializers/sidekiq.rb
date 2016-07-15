@@ -1,9 +1,2 @@
-Sidekiq.configure_server do |config|
-  config.redis = { url: 'redis://localhost:6379' }
-end
-
-Sidekiq.configure_client do |config|
-  config.redis = { url: 'redis://localhost:6379' }
-end
-
-
+uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
+REDIS = Redis.new(host: uri.host, port: uri.port, password: uri.password)
