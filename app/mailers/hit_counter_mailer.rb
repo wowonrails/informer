@@ -5,7 +5,7 @@ class HitCounterMailer < ApplicationMailer
 
     @vk_user = user
     @user = User.first
-    mail(to: "Vladimir <#{@user.email}>",
+    mail(to: @user.email,
       subject: "Время нахождения в VK: #{user.duration(user.times_per_day)}")
 
     Rails.loger.info "-------------------------------------Mailer Finish"
