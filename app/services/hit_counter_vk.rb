@@ -51,7 +51,7 @@ class HitCounterVk
 
     def send_email
       user = VkUser.last
-      HitCounterMailer.while_in_vkontact(user).deliver
+      VkWorker.perform_async(user.id)
     end
   end
 end
