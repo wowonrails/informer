@@ -50,12 +50,12 @@ class HitCounterVk
     end
 
     def send_email
-      Rails.loger.info "-------------------------------------Mailer service run"
+      Rails.logger.info "-------------------------------------Mailer service run"
 
       user = VkUser.last
       VkWorker.perform_async(user.id)
 
-      Rails.loger.info "-------------------------------------Mailer service end"
+      Rails.logger.info "-------------------------------------Mailer service end"
     end
   end
 end
