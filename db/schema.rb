@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20160713134620) do
   create_table "vk_users", force: :cascade do |t|
     t.string   "name"
     t.integer  "online"
-    t.datetime "initial"
     t.datetime "time_start"
     t.datetime "time_finish"
     t.integer  "times_per_day"

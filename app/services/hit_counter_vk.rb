@@ -11,7 +11,7 @@ class HitCounterVk
     def counter!
       user = VkUser.find_by(name: @user_name)
 
-      if user.present? && Time.now - user.initial < 24.hour.to_i
+      if user.present? && Time.now - user.created_at < 24.hour.to_i
 
         unless user.online == @user_status
           user.update(online: @user_status)
@@ -26,17 +26,15 @@ class HitCounterVk
           end
         end
 
-      elsif user.present? && Time.now - user.initial >= 24.hour.to_i
+      elsif user.present? && Time.now - user.created_at >= 24.hour.to_i
 
         user.destroy
         user = VkUser.create(name: @user_name,
                              online: 0,
-                             initial: Time.now,
                              times_per_day: 0)
       else
         user = VkUser.create(name: @user_name,
                              online: 0,
-                             initial: Time.now,
                              times_per_day: 0)
       end
 
@@ -50,12 +48,8 @@ class HitCounterVk
     end
 
     def send_email
-      Rails.logger.info "-------------------------------------Mailer service run"
-
       user = VkUser.last
       VkWorker.perform_async(user.id)
-
-      Rails.logger.info "-------------------------------------Mailer service end"
     end
   end
 end
