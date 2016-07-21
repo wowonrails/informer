@@ -48,8 +48,12 @@ class HitCounterVk
     end
 
     def send_email
+      Rails.logger.info "----------------------------------------- sender run"
+
       user = VkUser.last
       VkWorker.perform_async(user.id)
+
+      Rails.logger.info "----------------------------------------- sender end"
     end
   end
 end
