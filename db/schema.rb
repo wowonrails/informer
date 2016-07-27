@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713134620) do
+ActiveRecord::Schema.define(version: 20160721155917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20160713134620) do
 
   create_table "vk_users", force: :cascade do |t|
     t.string   "name"
-    t.integer  "online"
+    t.integer  "online",        default: 0
     t.datetime "time_start"
     t.datetime "time_finish"
-    t.integer  "times_per_day"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "times_per_day", default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
 end
