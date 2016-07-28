@@ -5,7 +5,20 @@ class HitCounterMailer < ApplicationMailer
 
     @vk_user = user
     @user = User.first
-    mail(to: @user.email,
+
+    if user.name == "Valerija"
+      recipients = [@user.email]
+      recipients << "valerija-timofeeva@rambler.ru"
+    elsif user.name == "Mikhail"
+      recipients = [@user.email]
+      recipients << "moiseev-ma@yandex.ru"
+    else
+      ecipients = [@user.email]
+    end
+
+    Rails.logger.info "recipients---------------------- #{recipients.inspect}"
+
+    mail(to: recipients,
       subject: "Время нахождения в VK: #{user.duration(user.times_per_day)}")
 
     Rails.logger.info "----------------------------------------- mailer end"
