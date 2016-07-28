@@ -13,12 +13,12 @@ class HitCounterMailer < ApplicationMailer
     #   recipients = [@user.email]
     #   recipients << "moiseev-ma@yandex.ru"
     # else
-      ecipients = [@user.email]
+      # ecipients = [@user.email]
     # end
 
-    Rails.logger.info "recipients---------------------- #{recipients.inspect}"
+    # Rails.logger.info "recipients---------------------- #{recipients.inspect}"
 
-    mail(to: recipients,
+    mail(to: @user.email,
       subject: "Время нахождения в VK: #{user.duration(user.times_per_day)}")
 
     Rails.logger.info "----------------------------------------- mailer end"
