@@ -32,7 +32,7 @@ class VkAnalyzer
     def add_new_user!(vk_user_ops)
       VkUser.create!(
         vk_id: vk_user_ops["id"],
-        name: vk_user_ops["name"]
+        name: vk_user_ops["first_name"]
       )
     end
 
