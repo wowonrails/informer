@@ -7,7 +7,7 @@ class VkAnalyzer
   class << self
     def run
       api_user_options_list.each do |vk_user_ops|
-        user = VkUser.find_by(id: vk_user_ops["id"])
+        user = VkUser.find_by(vk_id: vk_user_ops["id"])
         user = add_new_user!(vk_user_ops) if user.blank?
 
         check_new_day_started!(user)
@@ -31,8 +31,8 @@ class VkAnalyzer
 
     def add_new_user!(vk_user_ops)
       VkUser.create!(
-        vk_id: vk_user["id"],
-        name: vk_user["name"]
+        vk_id: vk_user_ops["id"],
+        name: vk_user_ops["name"]
       )
     end
 
